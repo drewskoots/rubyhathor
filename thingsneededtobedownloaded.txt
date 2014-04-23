@@ -1,0 +1,6 @@
+youtube-dl
+google api client
+trollop
+ffmpeg
+libspotify
+FFI
