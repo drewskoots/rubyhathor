@@ -11,9 +11,10 @@ require 'trollop'
 DEVELOPER_KEY = "AIzaSyD8zH9UL-jkNoeIMWaon9J4xCKXsII2hlg"
 YOUTUBE_API_SERVICE_NAME = "youtube"
 YOUTUBE_API_VERSION = "v3"
-
+puts'What should we search for?'
+lookfor=gets.chomp
 opts = Trollop::options do
-  opt :q, 'Search term', :type => String, :default => 'Crazy Train'
+  opt :q, 'Search term', :type => String, :default => lookfor
   opt :maxResults, 'Max results', :type => :int, :default => 25
 end
 
@@ -54,3 +55,4 @@ puts "Videos:\n", videos, "\n"
 puts "IDs:\n", videoids, "\n"    
 puts "Channels:\n", channels, "\n"
 puts "Playlists:\n", playlists, "\n"
+`python youtube-dl-master/youtube-dl -x --audio-format 'mp3' --prefer-ffmpeg https://www.youtube.com/watch?v=#{videoids[0]}`
